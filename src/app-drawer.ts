@@ -1,13 +1,17 @@
 import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
+import { msg, str, localized } from "@lit/localize";
+import { setLocale } from "./locale-config";
 
+@localized()
 @customElement("app-drawer")
 export class AppDrawer extends LitElement {
   static styles = css`
     header {
       background-color: var(--header-bg-color);
       color: var(--header-text-color);
-      display: flex;
+      display: grid;
+      grid-template-columns: 50px 1fr auto;
       align-items: center;
       position: fixed;
       top: 0;
@@ -103,14 +107,22 @@ export class AppDrawer extends LitElement {
           <div class="line-3"></div>
         </label>
         <div class="nav-bla">
-          <h1>Content here!</h1>
+          <h1>${msg(str`Content here!`)}</h1>
         </div>
-        <div>Some header!</div>
+        <div>${msg(str`Some header!`)}</div>
+        <select @change=${this.languageChanged}>
+          <option>DE</option>
+          <option>EN</option>
+        </select>
       </header>
       <my-element class="content">
-        <p>This is child content</p>
+        <p>${msg(str`This is child content`)}</p>
       </my-element>
     `;
+  }
+
+  private languageChanged(evt: Event): void {
+    setLocale((evt.currentTarget as HTMLSelectElement).value.toLowerCase());
   }
 }
 

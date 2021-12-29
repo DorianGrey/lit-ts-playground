@@ -1,5 +1,6 @@
 import { html, css, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { msg, str, localized } from "@lit/localize";
 
 /**
  * An example element.
@@ -7,6 +8,7 @@ import { customElement, property } from "lit/decorators.js";
  * @slot - This element has a slot
  * @csspart button - The button
  */
+@localized()
 @customElement("my-element")
 export class MyElement extends LitElement {
   static styles = css`
@@ -32,9 +34,9 @@ export class MyElement extends LitElement {
 
   render() {
     return html`
-      <h1>Hello, ${this.name}!</h1>
+      <h1>${msg(str`Hello, ${this.name}!`)}</h1>
       <button @click=${this._onClick} part="button">
-        Click Count: ${this.count}
+        ${msg(str`Click Count: ${this.count}`)}
       </button>
       <slot></slot>
     `;
@@ -42,10 +44,6 @@ export class MyElement extends LitElement {
 
   private _onClick() {
     this.count++;
-  }
-
-  foo(): string {
-    return "foo";
   }
 }
 

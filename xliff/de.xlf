@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<file target-language="de" source-language="en" original="lit-localize-inputs" datatype="plaintext">
+<body>
+<trans-unit id="s1cd66895b6b2e78b">
+  <source>Content here!</source>
+  <target>Inhalt hier!</target>
+</trans-unit>
+<trans-unit id="s6cc1dd5a08158329">
+  <source>Some header!</source>
+  <target>Ein Header!</target>
+</trans-unit>
+<trans-unit id="s43c187a3bd530e30">
+  <source>This is child content</source>
+  <target>Das ist ein Child-Node Inhalt</target>
+</trans-unit>
+<trans-unit id="sbf7f5356f05d8bb6">
+  <source>Hello, <x id="0" equiv-text="${this.name}"/>!</source>
+  <target>Hallo, <x id="0" equiv-text="${this.name}"/>!</target>
+</trans-unit>
+<trans-unit id="s057d05cfa4fe5b98">
+  <source>Click Count: <x id="0" equiv-text="${this.count}"/></source>
+  <target>Anzahl Klicks: <x id="0" equiv-text="${this.count}"/></target>
+</trans-unit>
+</body>
+</file>
+</xliff>
