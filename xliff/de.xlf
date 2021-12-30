@@ -10,6 +10,14 @@
   <source>Some header!</source>
   <target>Ein Header!</target>
 </trans-unit>
+<trans-unit id="s63e71d20d1eaca93">
+  <source>German</source>
+  <target>Deutsch</target>
+</trans-unit>
+<trans-unit id="s4caed5b7a7e5d89b">
+  <source>English</source>
+  <target>Englisch</target>
+</trans-unit>
 <trans-unit id="sbf7f5356f05d8bb6">
   <source>Hello, <x id="0" equiv-text="${this.name}"/>!</source>
   <target>Hallo, <x id="0" equiv-text="${this.name}"/>!</target>

@@ -95,6 +95,20 @@ export class AppDrawer extends LitElement {
     #burger-toggle:checked ~ .nav-bla {
       transform: translateX(0);
     }
+
+    select {
+      background-color: var(--header-bg-color);
+      color: var(--header-text-color);
+      padding: 8px;
+      border: none;
+      height: 100%;
+      margin-right: 8px;
+    }
+
+    option {
+      background-color: var(--header-bg-color);
+      color: var(--header-text-color);
+    }
   `;
 
   render() {
@@ -111,8 +125,8 @@ export class AppDrawer extends LitElement {
         </div>
         <div>${msg(str`Some header!`)}</div>
         <select @change=${this.languageChanged}>
-          <option>DE</option>
-          <option>EN</option>
+          <option value="de">${msg(str`German`)}</option>
+          <option value="en">${msg(str`English`)}</option>
         </select>
       </header>
       <main class="content">
@@ -122,7 +136,7 @@ export class AppDrawer extends LitElement {
   }
 
   private languageChanged(evt: Event): void {
-    setLocale((evt.currentTarget as HTMLSelectElement).value.toLowerCase());
+    setLocale((evt.currentTarget as HTMLSelectElement).value);
   }
 }
 
