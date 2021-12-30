@@ -9,8 +9,8 @@ import { msg, str, localized } from "@lit/localize";
  * @csspart button - The button
  */
 @localized()
-@customElement("my-element")
-export class MyElement extends LitElement {
+@customElement("x-counter")
+export class CounterElement extends LitElement {
   static styles = css`
     :host {
       display: block;
@@ -49,6 +49,6 @@ export class MyElement extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "my-element": MyElement;
+    "x-counter": CounterElement;
   }
 }

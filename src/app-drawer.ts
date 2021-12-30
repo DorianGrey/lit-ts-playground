@@ -115,9 +115,9 @@ export class AppDrawer extends LitElement {
           <option>EN</option>
         </select>
       </header>
-      <my-element class="content">
-        <p>${msg(str`This is child content`)}</p>
-      </my-element>
+      <main class="content">
+        <slot></slot>
+      </main>
     `;
   }
 

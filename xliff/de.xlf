@@ -10,10 +10,6 @@
   <source>Some header!</source>
   <target>Ein Header!</target>
 </trans-unit>
-<trans-unit id="s43c187a3bd530e30">
-  <source>This is child content</source>
-  <target>Das ist ein Child-Node Inhalt</target>
-</trans-unit>
 <trans-unit id="sbf7f5356f05d8bb6">
   <source>Hello, <x id="0" equiv-text="${this.name}"/>!</source>
   <target>Hallo, <x id="0" equiv-text="${this.name}"/>!</target>

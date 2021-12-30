@@ -1,9 +1,10 @@
 import "system-font-css/system-font.css";
 import "./global.css";
 
-import "./my-element";
+import "./pages/counter";
+import "./pages/not-found";
 import "./app-drawer";
-import "./app-main";
+import "./router";
 
 import { allLocales } from "./locales/locale-codes";
 import { getLocale, setLocale } from "./locale-config";

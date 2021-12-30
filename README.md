@@ -10,12 +10,14 @@ This time: [Lit](https://lit.dev) with TypeScript.
 
 # The Bad
 
+# The Ugly
+
+# The Curious
+
 - For a still unknown reason, `@lit/localize` does not update the translations on the app's root element if that element is listed directly in the `index.html`. In my case, I had
   ```html
   <body>
     <app-drawer></app-drawer>
   </body>
   ```
-  listed directly in the `index.html` file, which cause the translations in the `app-drawer` component to not be applied properly. However, after wrapping it into another element `app-main` which does nothing but rendering the `app-drawer` element, the translations on that element started to work fine. Not that devastating overall, but still unlikely to have an unneccessary shadow root level.
-
-# The Ugly
+  listed directly in the `index.html` file, which cause the translations in the `app-drawer` component to not be applied properly. However, after wrapping it into another element `app-main` which does nothing but rendering the `app-drawer` element, the translations on that element started to work fine. Not that devastating overall, but still unlikely to have an unneccessary shadow root level. It is not yet clear if this issue is caused by `lit` or `vite`, however it's no longer an issue since the introduction of routing.
