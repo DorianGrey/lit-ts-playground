@@ -2,9 +2,9 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
 <file target-language="de" source-language="en" original="lit-localize-inputs" datatype="plaintext">
 <body>
-<trans-unit id="s1cd66895b6b2e78b">
-  <source>Content here!</source>
-  <target>Inhalt hier!</target>
+<trans-unit id="s352233df89b5f1ed">
+  <source>Counter example</source>
+  <target>Zähler Beispiel</target>
 </trans-unit>
 <trans-unit id="s6cc1dd5a08158329">
   <source>Some header!</source>

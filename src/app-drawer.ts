@@ -12,6 +12,7 @@ export class AppDrawer extends LitElement {
       color: var(--header-text-color);
       display: grid;
       grid-template-columns: 50px 1fr auto;
+      gap: 1rem;
       align-items: center;
       position: fixed;
       top: 0;
@@ -109,6 +110,28 @@ export class AppDrawer extends LitElement {
       background-color: var(--header-bg-color);
       color: var(--header-text-color);
     }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-bla a {
+      color: var(--header-text-color);
+      display: block;
+      text-decoration: none;
+    }
+
+    .nav-bla li {
+      padding: 16px 8px;
+      background-color: var(--header-bg-color);
+      transition: all 0.25s linear;
+    }
+
+    .nav-bla li:hover {
+      filter: brightness(125%);
+    }
   `;
 
   render() {
@@ -120,9 +143,13 @@ export class AppDrawer extends LitElement {
           <div class="line-2"></div>
           <div class="line-3"></div>
         </label>
-        <div class="nav-bla">
-          <h1>${msg(str`Content here!`)}</h1>
-        </div>
+        <nav class="nav-bla">
+          <ul>
+            <li>
+              <a href="/counter">${msg(str`Counter example`)}</a>
+            </li>
+          </ul>
+        </nav>
         <div>${msg(str`Some header!`)}</div>
         <select @change=${this.languageChanged}>
           <option value="de">${msg(str`German`)}</option>
