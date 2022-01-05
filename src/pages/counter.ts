@@ -1,15 +1,12 @@
 import { html, css, LitElement } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement, property, state } from "lit/decorators.js";
 import { msg, str, localized } from "@lit/localize";
 
 /**
- * An example element.
- *
- * @slot - This element has a slot
- * @csspart button - The button
+ * Sample element from the Vite Lit-TS template, just for illustration purposes.
  */
 @localized()
-@customElement("x-counter")
+@customElement("counter-sample")
 export class CounterElement extends LitElement {
   static styles = css`
     :host {
@@ -20,16 +17,10 @@ export class CounterElement extends LitElement {
     }
   `;
 
-  /**
-   * The name to say "Hello" to.
-   */
   @property()
   name = "World";
 
-  /**
-   * The number of times the button has been clicked.
-   */
-  @property({ type: Number })
+  @state()
   count = 0;
 
   render() {
@@ -49,6 +40,6 @@ export class CounterElement extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "x-counter": CounterElement;
+    "counter-sample": CounterElement;
   }
 }

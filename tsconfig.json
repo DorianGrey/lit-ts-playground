@@ -2,6 +2,7 @@
   "compilerOptions": {
     "module": "esnext",
     "lib": ["es2017", "dom", "dom.iterable"],
+    "target": "es2017",
     "declaration": true,
     "noEmit": true,
     "outDir": "./types",
@@ -15,8 +16,9 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "typeRoots": ["types", "node_modules/@types"]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "types/*.d.ts"],
   "exclude": []
 }

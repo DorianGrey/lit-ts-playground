@@ -13,13 +13,16 @@
     "i18n:build": "lit-localize build"
   },
   "dependencies": {
+    "@lit-labs/virtualizer": "^0.6.0",
     "@lit/localize": "^0.11.1",
     "@vaadin/router": "^1.7.4",
+    "leaflet": "^1.7.1",
     "lit": "^2.0.2",
     "system-font-css": "^2.0.2"
   },
   "devDependencies": {
     "@lit/localize-tools": "^0.5.0",
+    "@types/leaflet": "^1.7.7",
     "@typescript-eslint/eslint-plugin": "^5.8.0",
     "@typescript-eslint/parser": "^5.8.0",
     "eslint": "^8.5.0",

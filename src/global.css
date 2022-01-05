@@ -4,6 +4,8 @@
   --header-text-color: #ffffff;
   --drawer-burger-line-height: 6px;
   --menu-width: 320px;
+  --content-bg-color: #ffffff;
+  --content-text-color: #222222;
 }
 
 html {

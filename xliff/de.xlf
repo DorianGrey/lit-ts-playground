@@ -6,6 +6,14 @@
   <source>Counter example</source>
   <target>Zähler Beispiel</target>
 </trans-unit>
+<trans-unit id="s53d9788f60896040">
+  <source>Map experiment</source>
+  <target>Karten Experiment</target>
+</trans-unit>
+<trans-unit id="s40f6f0f5f8de89e7">
+  <source>Large list experiment</source>
+  <target>Lange Liste Experiment</target>
+</trans-unit>
 <trans-unit id="s6cc1dd5a08158329">
   <source>Some header!</source>
   <target>Ein Header!</target>
@@ -25,6 +33,22 @@
 <trans-unit id="s057d05cfa4fe5b98">
   <source>Click Count: <x id="0" equiv-text="${this.count}"/></source>
   <target>Anzahl Klicks: <x id="0" equiv-text="${this.count}"/></target>
+</trans-unit>
+<trans-unit id="s0a95ea7c8e330485">
+  <source>Latitude</source>
+  <target>Breitengrad</target>
+</trans-unit>
+<trans-unit id="sa25de1d82d6a4d4e">
+  <source>Longitude</source>
+  <target>Längengrad</target>
+</trans-unit>
+<trans-unit id="sea2ea0b77374bbf6">
+  <source>Move to coordinates</source>
+  <target>Zu Koordinaten verschieben</target>
+</trans-unit>
+<trans-unit id="s379c18aec5654894">
+  <source>Move</source>
+  <target>Verschieben</target>
 </trans-unit>
 </body>
 </file>

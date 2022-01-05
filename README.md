@@ -2,22 +2,47 @@ Just another of my (in-)famous playground projects :)
 
 This time: [Lit](https://lit.dev) with TypeScript.
 
-# The Good
+# Tasks
 
-# The Mixed-Bag
+| Task         | description                                     |
+| ------------ | ----------------------------------------------- |
+| dev          | Start the dev enviroment                        |
+| build        | Create a production build                       |
+| format       | Format all code using `prettier`                |
+| lint         | Lint all code using `eslint`                    |
+| serve        | Serve a production build as a preview           |
+| i18n:extract | Extract messages to be translated from the code |
+| i18n:build   | Build translated `XLF` files back to code       |
+
+# Impressions
+
+The list below contains my impressions based on what I've tried so far, and will be updated during the progress.
+
+## The Good
+
+- From what I've seen until now, `lit` is very performant and only triggers rerenders when essentially neccessary.
+- `lit` itself is very small w.r.t. the resulting bundle size. When building the project, the impression might be slightly different (with more than 60 KB gzipped), but most of this is caused by the other libraries involved.
+
+## The Mixed-Bag
 
 - Even in runtime mode, `@lit/localize` does not complain about a missing translation for a text fragment, not even via browser console. This only happens in the `lit-localize build` task. While this is totally fine with having progressive work in mind (translations might come in deferred) it may become problematic when testing without having feedback about the missing parts.
+- I'm still having mixed feelings about writing template and style code as string literals. Different from particular files, specific tooling is required even for simple things like syntax highlighting. Besides, both can become quite complex even for "small" components (imagine a very grim look at _business requirements_ here) which makes them even harder to read. On the other hand, this approach leads to a very simple diffing mechanism and allows to have a better overview about all ties between layout and logic without additional tooling like it is required for JSX/TSX.
+- While especially style-encapsulation via shadow DOM is very useful feature for preventing collisions, it makes applying base style normalizations like [modern-normalize](https://github.com/sindresorhus/modern-normalize) or [sanitize.css](https://github.com/csstools/sanitize.css) a more complex task, since they have to be added to all relevant components.
 
-# The Bad
+## The Bad
 
-# The Ugly
+## The Ugly
 
-# The Curious
+## The Curious
 
 - For a still unknown reason, `@lit/localize` does not update the translations on the app's root element if that element is listed directly in the `index.html`. In my case, I had
+
   ```html
   <body>
     <app-drawer></app-drawer>
   </body>
   ```
+
   listed directly in the `index.html` file, which cause the translations in the `app-drawer` component to not be applied properly. However, after wrapping it into another element `app-main` which does nothing but rendering the `app-drawer` element, the translations on that element started to work fine. Not that devastating overall, but still unlikely to have an unneccessary shadow root level. It is not yet clear if this issue is caused by `lit` or `vite`, however it's no longer an issue since the introduction of routing.
+
+- On the `/experiments/large-list` screen, an experiment involving the virtual scrolling list from the `@lit-labs/virtualizer` package was added. To put a bit of stress on this, the code generates 1000000 entries, but when scrolling to the bottom of the screen, the last visible entry is 621378. I.e. it seems that 378622 entries are not rendered. While 1000000 entries are not that usual, this is still somewhat odd.

@@ -14,7 +14,21 @@ router.setRoutes([
     path: "/",
     component: "app-drawer",
     children: [
-      { path: "/counter", component: "x-counter" },
+      { path: "/counter", component: "counter-sample" },
+      {
+        path: "/experiments/map",
+        component: "map-page",
+        action: async () => {
+          await import("./pages/map");
+        },
+      },
+      {
+        path: "/experiments/large-list",
+        component: "large-list-page",
+        action: async () => {
+          await import("./pages/large-list");
+        },
+      },
       { path: "(.*)", component: "not-found" },
     ],
   },

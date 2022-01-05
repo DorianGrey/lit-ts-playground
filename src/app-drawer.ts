@@ -18,10 +18,11 @@ export class AppDrawer extends LitElement {
       top: 0;
       height: var(--header-height);
       width: 100%;
+      z-index: 1024;
     }
 
     .content {
-      margin: var(--header-height) 8px 8px 8px;
+      margin-top: var(--header-height);
     }
 
     #burger-toggle {
@@ -146,7 +147,19 @@ export class AppDrawer extends LitElement {
         <nav class="nav-bla">
           <ul>
             <li>
-              <a href="/counter">${msg(str`Counter example`)}</a>
+              <a href="/counter" @click="${this.navClicked}"
+                >${msg(str`Counter example`)}</a
+              >
+            </li>
+            <li>
+              <a href="/experiments/map" @click="${this.navClicked}"
+                >${msg(str`Map experiment`)}</a
+              >
+            </li>
+            <li>
+              <a href="/experiments/large-list" @click="${this.navClicked}"
+                >${msg(str`Large list experiment`)}</a
+              >
             </li>
           </ul>
         </nav>
@@ -160,6 +173,10 @@ export class AppDrawer extends LitElement {
         <slot></slot>
       </main>
     `;
+  }
+
+  private navClicked(): void {
+    this.shadowRoot?.getElementById("burger-toggle")?.click();
   }
 
   private languageChanged(evt: Event): void {
