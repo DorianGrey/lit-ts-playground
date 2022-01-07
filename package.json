@@ -8,9 +8,9 @@
     "format": "prettier --write .",
     "lint": "eslint . --ext .ts,.tsx",
     "prepare": "husky install",
-    "serve": "sirv dist -s",
     "i18n:extract": "lit-localize extract",
-    "i18n:build": "lit-localize build"
+    "i18n:build": "lit-localize build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@lit-labs/virtualizer": "^0.6.0",
@@ -32,7 +32,6 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.1.4",
     "prettier": "2.5.1",
-    "sirv-cli": "^1.0.14",
     "typescript": "^4.4.4",
     "vite": "^2.7.2"
   },

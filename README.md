@@ -10,7 +10,7 @@ This time: [Lit](https://lit.dev) with TypeScript.
 | build        | Create a production build                       |
 | format       | Format all code using `prettier`                |
 | lint         | Lint all code using `eslint`                    |
-| serve        | Serve a production build as a preview           |
+| preview      | Serve a production build as a preview           |
 | i18n:extract | Extract messages to be translated from the code |
 | i18n:build   | Build translated `XLF` files back to code       |
 
