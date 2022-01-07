@@ -2,6 +2,7 @@ import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { msg, str, localized } from "@lit/localize";
 import { setLocale } from "./locale-config";
+import { renderRoutes, router } from "./router";
 
 @localized()
 @customElement("app-drawer")
@@ -169,9 +170,7 @@ export class AppDrawer extends LitElement {
           <option value="en">${msg(str`English`)}</option>
         </select>
       </header>
-      <main class="content">
-        <slot></slot>
-      </main>
+      <main class="content">${renderRoutes(router)}</main>
     `;
   }
 

@@ -8,6 +8,7 @@ import "./router";
 
 import { allLocales } from "./locales/locale-codes";
 import { getLocale, setLocale } from "./locale-config";
+import { html, render } from "lit";
 
 const browserSupportedLanguages = navigator.languages.map((it) =>
   it.slice(0, 2)
@@ -24,3 +25,9 @@ if (
 ) {
   setLocale(firstMatchingSupportedLanguage);
 }
+
+const outlet = document.getElementById("outlet");
+if (!outlet) {
+  throw new Error("Outlet container not found");
+}
+render(html`<app-drawer></app-drawer>`, outlet);

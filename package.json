@@ -15,7 +15,7 @@
   "dependencies": {
     "@lit-labs/virtualizer": "^0.6.0",
     "@lit/localize": "^0.11.1",
-    "@vaadin/router": "^1.7.4",
+    "esroute": "^0.1.1",
     "leaflet": "^1.7.1",
     "lit": "^2.0.2",
     "system-font-css": "^2.0.2"
@@ -41,8 +41,5 @@
       "eslint --fix"
     ],
     "**/*": "prettier --write --ignore-unknown"
-  },
-  "vaadin": {
-    "disableUsageStatistics": true
   }
 }

@@ -3,7 +3,6 @@ import { css, html, LitElement, unsafeCSS } from "lit";
 import { customElement, queryAsync, state } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { LatLng, map as createMap, Map as LMap, tileLayer } from "leaflet";
-import { RouterLocation } from "@vaadin/router";
 
 import leafletStyles from "leaflet/dist/leaflet.css?inline";
 import { fmtNumber } from "../util/number-format";
@@ -108,9 +107,6 @@ export class MapPage extends LitElement {
   @queryAsync("#map")
   mapElement!: Promise<HTMLElement>;
 
-  // Set by the router.
-  location!: RouterLocation;
-
   render() {
     return html`
       <div class="map-container">
@@ -188,7 +184,7 @@ export class MapPage extends LitElement {
       // 1. Explicitly provided lat/lng query params
       // 2. Position requested from user
       // 3. Internal default
-      const urlSearchParams = new URLSearchParams(this.location.search);
+      const urlSearchParams = new URLSearchParams(location.search);
       const providedLat = urlSearchParams.get("lat");
       const providedLng = urlSearchParams.get("lng");
       if (providedLat && providedLng) {

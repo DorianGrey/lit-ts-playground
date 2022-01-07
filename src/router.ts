@@ -1,37 +1,62 @@
-import { Router } from "@vaadin/router";
+import { Router } from "esroute";
+import { html, noChange, TemplateResult } from "lit";
+import { AsyncDirective, directive } from "lit/async-directive.js";
+import { PartInfo, PartType } from "lit/directive.js";
 
-const outlet = document.getElementById("outlet");
-const router = new Router(outlet);
-router.setRoutes([
-  { path: "/", redirect: "/counter" },
-  /* 
-    Use the app drawer as a navigation holder and render the actual contents into its <slot>.
-    Heading this way is easier than trying to provide the router outlet via this custom
-    element - it is usually not rendered when the router becomes set up, thus it would be
-    required to init the router lazily ... which makes things way more complicated overall.
-   */
+export const router = new Router<TemplateResult>(
   {
-    path: "/",
-    component: "app-drawer",
-    children: [
-      { path: "/counter", component: "counter-sample" },
-      {
-        path: "/experiments/map",
-        component: "map-page",
-        action: async () => {
-          await import("./pages/map");
-        },
+    "/": ({ go }) => go("/counter"),
+    counter: () => html`<counter-sample></counter-sample>`,
+    experiments: {
+      map: async () => {
+        await import("./pages/map");
+        return html`<map-page></map-page>`;
       },
-      {
-        path: "/experiments/large-list",
-        component: "large-list-page",
-        action: async () => {
-          await import("./pages/large-list");
-        },
+      "large-list": async () => {
+        await import("./pages/large-list");
+        return html`<large-list-page></large-list-page>`;
       },
-      { path: "(.*)", component: "not-found" },
-    ],
+    },
   },
-]);
+  {
+    notFound: () => html`<not-found></not-found>`,
+  }
+);
 
-export { router };
+class RenderRoutesDirective extends AsyncDirective {
+  private _router?: Router<TemplateResult>;
+  private _unsubscribe?: () => void;
+
+  constructor(partInfo: PartInfo) {
+    super(partInfo);
+    if (partInfo.type !== PartType.CHILD)
+      throw new Error(
+        "The `renderRoutes` directive must be used as a child directive."
+      );
+  }
+
+  override render(router: Router<TemplateResult>) {
+    if (this._router !== router) {
+      this._unsubscribe?.();
+      this._router = router;
+      if (this.isConnected) this._subscribe();
+    }
+    return noChange;
+  }
+
+  override disconnected() {
+    this._unsubscribe?.();
+  }
+
+  override reconnected() {
+    this._subscribe();
+  }
+
+  private _subscribe() {
+    this._unsubscribe = this._router?.onResolve(({ value }) =>
+      this.setValue(value)
+    );
+  }
+}
+
+export const renderRoutes = directive(RenderRoutesDirective);

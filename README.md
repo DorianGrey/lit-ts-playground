@@ -14,6 +14,25 @@ This time: [Lit](https://lit.dev) with TypeScript.
 | i18n:extract | Extract messages to be translated from the code |
 | i18n:build   | Build translated `XLF` files back to code       |
 
+# About the branch
+
+This branch uses [esroute](https://github.com/svi3c/esroute) instead of [@vaadin/router](https://vaadin.github.io/router), which is more lightweight, but with a few less features and less battle-testing. Whether the feature difference is a concern naturally depends on the particular use-case - the most relevant and commonly required features are there. Let's see where this one heads to :)
+
+Regarding "lightweight", here are the numbers of a production build:
+
+| File                                 | Size                         |
+| ------------------------------------ | ---------------------------- |
+| assets/favicon.17e50649.svg          | 1.49 KiB                     |
+| index.html                           | 0.53 KiB                     |
+| assets/index.222ae776.js             | 9.59 KiB / gzip: 3.44 KiB    |
+| assets/de.84995442.js                | 0.50 KiB / gzip: 0.38 KiB    |
+| assets/ResizeObserver.es.86b88537.js | 9.46 KiB / gzip: 3.28 KiB    |
+| assets/event-target-shim.243ee299.js | 6.00 KiB / gzip: 1.99 KiB    |
+| assets/vendor.8a495999.js            | 27.90 KiB / gzip: 9.66 KiB   |
+| assets/index.fe7a0692.css            | 2.58 KiB / gzip: 0.54 KiB    |
+| assets/large-list.90fed5b5.js        | 29.21 KiB / gzip: 8.45 KiB   |
+| assets/map.03e26aad.js               | 160.79 KiB / gzip: 49.26 KiB |
+
 # Impressions
 
 The list below contains my impressions based on what I've tried so far, and will be updated during the progress.
@@ -43,6 +62,6 @@ The list below contains my impressions based on what I've tried so far, and will
   </body>
   ```
 
-  listed directly in the `index.html` file, which cause the translations in the `app-drawer` component to not be applied properly. However, after wrapping it into another element `app-main` which does nothing but rendering the `app-drawer` element, the translations on that element started to work fine. Not that devastating overall, but still unlikely to have an unneccessary shadow root level. It is not yet clear if this issue is caused by `lit` or `vite`, however it's no longer an issue since the introduction of routing.
+  listed directly in the `index.html` file, which cause the translations in the `app-drawer` component to not be applied properly. However, after wrapping it into another element `app-main` which does nothing but rendering the `app-drawer` element, the translations on that element started to work fine. Not that devastating overall, but still unlikely to have an unneccessary shadow root level. It is not yet clear if this issue is caused by `lit` or `vite`. To avoid this, it was required to render the `app-drawer` element manually using `lit`'s `render` function.
 
 - On the `/experiments/large-list` screen, an experiment involving the virtual scrolling list from the `@lit-labs/virtualizer` package was added. To put a bit of stress on this, the code generates 1000000 entries, but when scrolling to the bottom of the screen, the last visible entry is 621378. I.e. it seems that 378622 entries are not rendered. While 1000000 entries are not that usual, this is still somewhat odd.
