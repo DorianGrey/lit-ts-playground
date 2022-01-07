@@ -14,6 +14,32 @@ This time: [Lit](https://lit.dev) with TypeScript.
 | i18n:extract | Extract messages to be translated from the code |
 | i18n:build   | Build translated `XLF` files back to code       |
 
+# About the branches
+
+The currently exisiting branches use different routers mostly for comparison and testing purposes.
+
+- The [main](https://github.com/DorianGrey/lit-ts-playground) branch uses [@vaadin/router](https://vaadin.github.io/router).
+- The [experiment/esroute](https://github.com/DorianGrey/lit-ts-playground/tree/experiment/esroute) branch uses [esroute](https://github.com/svi3c/esroute).
+
+Those primarily differ in size, feature richness, performance and battle testing status. Just try out both and check for yourself :)
+
+Note that the currently used features of the routers do not cover all they provide, but I will add more experiments to improve that.
+
+Some numbers regarding the impact on the production build file sizes:
+
+| File                               | Size `@vaadin/router`        | Size `esroute`               | Difference (gzip) |
+| ---------------------------------- | ---------------------------- | ---------------------------- | ----------------- |
+| assets/favicon.{hash}.svg          | 1.49 KiB                     | 1.49 KiB                     | ./.               |
+| index.html                         | 0.53 KiB                     | 0.53 KiB                     | ./.               |
+| assets/index.{hash}.js             | 9.08 KiB / gzip: 3.20 KiB    | 9.59 KiB / gzip: 3.44 KiB    | +0.24 KiB         |
+| assets/de.{hash}.js                | 0.50 KiB / gzip: 0.38 KiB    | 0.50 KiB / gzip: 0.38 KiB    | ./.               |
+| assets/ResizeObserver.es.{hash}.js | 9.46 KiB / gzip: 3.28 KiB    | 9.46 KiB / gzip: 3.28 KiB    | ./.               |
+| assets/event-target-shim.{hash}.js | 6.00 KiB / gzip: 1.99 KiB    | 6.00 KiB / gzip: 1.99 KiB    | ./.               |
+| assets/index.{hash}.css            | 2.58 KiB / gzip: 0.54 KiB    | 2.58 KiB / gzip: 0.54 KiB    | ./.               |
+| assets/large-list.{hash}.js        | 31.65 KiB / gzip: 9.29 KiB   | 29.21 KiB / gzip: 8.45 KiB   | -0.85 KiB         |
+| assets/vendor.{hash}.js            | 44.41 KiB / gzip: 15.47 KiB  | 27.90 KiB / gzip: 9.66 KiB   | -5.81 KiB         |
+| assets/map.{hash}.js               | 160.79 KiB / gzip: 49.26 KiB | 160.79 KiB / gzip: 49.26 KiB | ./.               |
+
 # Impressions
 
 The list below contains my impressions based on what I've tried so far, and will be updated during the progress.
